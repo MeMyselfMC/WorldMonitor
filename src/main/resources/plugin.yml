@@ -1,0 +1,34 @@
+name: WorldMonitor
+author: MeMyself
+description: Monitors your worlds and warns you if they take up considerable disk space.
+
+version: ${version}
+main: io.memyself.worldmonitor.WorldMonitor
+
+softdepend: [WorldBorder]
+
+commands:
+  worldmonitor:
+    description: Main WorldMonitor command.
+    aliases: [wm]
+
+permissions:
+  worldmonitor.*:
+    description: All WorldMonitor permission nodes.
+    children:
+      worldmonitor.overall: true
+      worldmonitor.world.info: true
+      worldmonitor.reload: true
+      worldmonitor.warn: true
+  worldmonitor.overall:
+    description: Needed for the /wm overall command.
+    default: op
+  worldmonitor.world.info:
+    description: Needed for the /wm info {World} command.
+    default: op
+  worldmonitor.reload:
+    description: Needed for the /wm reload command.
+    default: op
+  worldmonitor.warn:
+    description: Receive warnings when a world's size on disk exceeds the configured minimum.
+    default: op

@@ -1,0 +1,82 @@
+# _  _  _  _____   ______        ______  _______  _____  __   _ _____ _______  _____   ______
+# |  |  | |     | |_____/ |      |     \ |  |  | |     | | \  |   |      |    |     | |_____/
+# |__|__| |_____| |    \_ |_____ |_____/ |  |  | |_____| |  \_| __|__    |    |_____| |    \_
+
+# Monitors your worlds and warns you if they take up considerable disk space.
+
+
+# Options
+
+options:
+  # World size warning options.
+  world-warnings:
+    # Minimum disk space a world should take up in order to be considered oversized.
+    # Value is in bytes, use http://www.convertunits.com/from/byte/to/gigabyte.
+    minimum-size-on-disk: 8589934592 # 8 GB by default.
+  # Should SI units (kB, MB, GB, TB, etc..) be used to display world sizes?
+  # Set to false to use IEC units (KiB, MiB, GiB, TiB, etc..)
+  # https://en.wikipedia.org/wiki/Binary_prefix
+  si: true
+  # Formatting value of oversize world sizes in the /wm overall and /wm info commands.
+  # https://jd.bukkit.org/org/bukkit/ChatColor.html
+  oversize-world-size-formatting: RED
+  # Should extra information about the plugin be printed to the console?
+  debug: false
+  # Should statistics for this plugin be submitted to bStats.org?
+  # A full plugin reload is required for changes to this option to be applied.
+  metrics: true
+
+# Locale
+# Colour Codes: http://ess.khhq.net/mc/
+
+locale:
+  # World warnings.
+  world-warnings:
+    console:
+      # Printed to the console when the plugin is done loading if one or more of the present worlds are oversize.
+      on-plugin-load: 'The following worlds are taking up too much disk space: %oversize_worlds%'
+      # Printed to the console when an oversized world is loaded.
+      on-world-load: 'The %world% world is taking up too much disk space (%size_on_disk%)!'
+    player:
+      # Shown to players with the worldmonitor.warn node when an oversized world gets loaded.
+      on-world-load: |-
+        &4&l&m-------------&r &c&lWARNING&r &4&l&m-------------
+        &rThe world that was just loaded onto the server is taking up too much disk space!
+        &rWorld: &c%world%
+        &rSize on Disk: &c%size_on_disk%
+      # Shown to players with the worldmonitor.warn permission node on join if one or more loaded worlds are oversize.
+      on-join: |-
+        &4&l&m-------------&r &c&lWARNING&r &4&l&m-------------
+        &rThe following worlds are taking up too much disk space:
+        &c%oversize_worlds%
+  # Returned after a successful attempt to reload the plugin's configuration using the /wm reload command.
+  config-reloaded: '&9&lWorldMonitor &8&l// &rConfiguration reloaded.'
+  # /wm overall command output.
+  overall:
+    # Header of the list.
+    header: '&8&m-------------------------------------'
+    # Printed for each loaded world.
+    entry: '&8- &a%world%&r: %size_on_disk% &r(&d%loaded_chunk_count% &rchunks loaded)'
+    # Footer of the list.
+    footer: '&8&m-------------------------------------'
+  # Output of the /wm info {World} command.
+  info: |-
+    &8&m-------------&r &a%world% &8&m-------------
+    &8- &dUID&r: %uid%
+    &8- &dSize on Disk&r: %size_on_disk%
+    &8- &dLoaded Chunk Count&r: %loaded_chunk_count%
+    &8- &dBorder Size&r: %worldborder_size%
+    &8- &dEnvironment&r: %environment%
+    &8- &dType&r: %type%
+    &8- &dSeed&r: %seed%
+    &8- &dDifficulty&r: %difficulty%
+    &8- &dEntity Count&r: %entity_count% (&d%living_entity_count% &rliving, &d%player_count% &rplayers)
+  # Returned when a player executes /wm, without any sub-commands.
+  command-usage: '&9&lWorldMonitor &8&l// &rUsage: &a/wm [reload, overall, info {World}]'
+  error:
+    # Returned when a player provides an invalid world name in the /wm info command.
+    world-doesnt-exist: '&9&lWorldMonitor &8&l// &cNo world by that name exists.'
+    # Returned when a player provides an invalid sub-command or argument for the /wm command.
+    invalid-arguments: '&9&lWorldMonitor &8&l// &cInvalid arguments provided.'
+    # Returned when a player attempts to run a WorldMonitor command, but they don't have permission to.
+    no-permission: '&9&lWorldMonitor &8&l// &cNo permission.'
