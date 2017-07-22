@@ -24,7 +24,7 @@ permissions:
     description: Needed for the /wm overall command.
     default: op
   worldmonitor.world.info:
-    description: Needed for the /wm info {World} command.
+    description: Needed for the /wm info command.
     default: op
   worldmonitor.reload:
     description: Needed for the /wm reload command.

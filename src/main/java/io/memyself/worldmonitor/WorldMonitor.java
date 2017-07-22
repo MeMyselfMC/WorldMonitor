@@ -33,7 +33,6 @@ public class WorldMonitor
 		
 		getLogger().info("WorldMonitor v" + getDescription().getVersion() + " has been enabled!");
 		
-		
 		if(!Utilities.getOversizeWorlds().isEmpty()){
 			if(getConfig().getString("locale.world-warnings.console.on-plugin-load") != null && !getConfig().getString("locale.world-warnings.console.on-plugin-load").isEmpty()) {
 				String humanReadableOversizeWorldNamesSequence = new String();

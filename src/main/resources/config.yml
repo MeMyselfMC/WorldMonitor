@@ -72,7 +72,7 @@ locale:
     &8- &dDifficulty&r: %difficulty%
     &8- &dEntity Count&r: %entity_count% (&d%living_entity_count% &rliving, &d%player_count% &rplayers)
   # Returned when a player executes /wm, without any sub-commands.
-  command-usage: '&9&lWorldMonitor &8&l// &rUsage: &a/wm [reload, overall, info {World}]'
+  command-usage: '&9&lWorldMonitor &8&l// &rUsage: &a/wm <reload|overall|info>'
   error:
     # Returned when a player provides an invalid world name in the /wm info command.
     world-doesnt-exist: '&9&lWorldMonitor &8&l// &cNo world by that name exists.'
