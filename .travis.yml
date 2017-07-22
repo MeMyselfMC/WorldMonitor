@@ -1,7 +1,6 @@
 language: java
 jdk:
-  - openjdk7
-script: mvn clean install
+  - oraclejdk8
 notifications:
   email: true
 sudo: false
