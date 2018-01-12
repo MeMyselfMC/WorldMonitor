@@ -21,9 +21,9 @@ public class WorldMonitor
 		}
 		new Utilities(this);
 		
-		getCommand("worldmonitor").setExecutor(new CommandManager(this));
-		
 		getServer().getPluginManager().registerEvents(new EventListener(this), this);
+		
+		getCommand("worldmonitor").setExecutor(new CommandManager(this));
 		
 		if(getConfig().getBoolean("options.metrics")) {
 			if(getConfig().getBoolean("options.debug")) getLogger().info("[DEBUG] Will be attempting to submit statistics to bStats.org.");
