@@ -24,12 +24,12 @@ public class Utilities {
 		wm = instance;
 	}
 	
-	static long getDirectorySize(String path) {
+	public static long getDirectorySize(String path) {
 		if(path != null) return FileUtils.sizeOfDirectory(new File(path));
 		else return Long.MIN_VALUE;
 	}
 	
-	static List<World> getOversizeWorlds() {
+	public static List<World> getOversizeWorlds() {
 		List<World> oversizeWorlds = new ArrayList<World>();
 		
 		if(wm.getConfig().getLong("options.world-warnings.minimum-size-on-disk") >= 0) {
@@ -41,7 +41,7 @@ public class Utilities {
 		return oversizeWorlds;
 	}
 	
-	static String getWorldBorderSize(World world) {
+	public static String getWorldBorderSize(World world) {
 		if(Bukkit.getPluginManager().isPluginEnabled("WorldBorder")) {
 			BorderData borderData = Config.Border(world.getName());
 			
@@ -52,7 +52,7 @@ public class Utilities {
 	}
 	
 	// http://programming.guide/java/formatting-byte-size-to-human-readable-format.html
-	static String getHumanReadableByteCount(long bytes, boolean si) {
+	public static String getHumanReadableByteCount(long bytes, boolean si) {
 		int unit = si ? 1000 : 1024;
 		
 		if(bytes < unit) return bytes + " B";
@@ -63,14 +63,14 @@ public class Utilities {
 		return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
 	}
 	
-	static String getHumanReadableEnvironmentName(Environment env) {
+	public static String getHumanReadableEnvironmentName(Environment env) {
 		if(env.equals(Environment.NORMAL)) return "Normal";
 		else if(env.equals(Environment.NETHER)) return "Nether";
 		else if(env.equals(Environment.THE_END)) return "End";
 		else return "N/A";
 	}
 	
-	static String getHumanReadableWorldType(WorldType type) {
+	public static String getHumanReadableWorldType(WorldType type) {
 		if(type.equals(WorldType.NORMAL)) return "Normal";
 		else if(type.equals(WorldType.FLAT)) return "Flat";
 		else if(type.equals(WorldType.LARGE_BIOMES)) return "Large Biomes";
@@ -80,7 +80,7 @@ public class Utilities {
 		else return "N/A";
 	}
 	
-	static String getHumanReadableDifficultyName(Difficulty diff) {
+	public static String getHumanReadableDifficultyName(Difficulty diff) {
 		if(diff.equals(Difficulty.PEACEFUL)) return "Peaceful";
 		else if(diff.equals(Difficulty.EASY)) return "Easy";
 		else if(diff.equals(Difficulty.NORMAL)) return "Normal";
